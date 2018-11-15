@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.6
+    networks:
+      - shared
+  tracer:
+    build: .
+    command: mix phoenix.server
+    volumes:
+      - .:/app
+    ports:
+      - "4500:4000"
+    depends_on:
+      - db
+    networks:
+      - shared
+
+networks:
+  shared: 
+    external:
+      name: shared
