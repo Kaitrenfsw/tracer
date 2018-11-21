@@ -1,6 +1,6 @@
 version: '2'
 services:
-  db:
+  tracer_db:
     image: postgres:9.6
     networks:
       - shared
@@ -12,7 +12,7 @@ services:
     ports:
       - "4500:4000"
     depends_on:
-      - db
+      - tracer_db
     networks:
       - shared
 
